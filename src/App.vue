@@ -45,6 +45,7 @@ onMounted(()=>{
   material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
   mesh = new THREE.Mesh( geometry, material );
   scene.add(mesh)
+
   // 轨道控制
   controls = new OrbitControls(camera, renderer.domElement);
   controls.update();
@@ -56,8 +57,6 @@ onMounted(()=>{
   }
 
   console.log("===")
-
-
   clock = new THREE.Clock()
 
   animat();
