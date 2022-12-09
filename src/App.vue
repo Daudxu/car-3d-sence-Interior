@@ -25,9 +25,11 @@ const height = window.innerHeight
 onMounted(()=>{
   // 场景
   scene = new THREE.Scene();
+  
   // 相机
   camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000);
   camera.position.set(0, 0, 20);
+
   // 渲染
   renderer = new THREE.WebGL1Renderer({
     antialias: true
@@ -37,10 +39,11 @@ onMounted(()=>{
   scene.background = new THREE.Color("#ccc")
   scene.environment = new THREE.Color("#ccc")
   domCanvas.value.appendChild(renderer.domElement );
+
   // 添加几何体
-  geometry = new THREE.SphereBufferGeometry(50, 50, 50)
-  material = new THREE.MeshBasicMaterial()
-  mesh = new THREE.Mesh(geometry, material)
+  geometry = new THREE.SphereGeometry( 15, 32, 16 );
+  material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+  mesh = new THREE.Mesh( geometry, material );
   scene.add(mesh)
   // 轨道控制
   controls = new OrbitControls(camera, renderer.domElement);
@@ -64,6 +67,7 @@ const animat = () => {
   requestAnimationFrame(animat);
   renderer.render(scene, camera);
 }
+
 </script>
 <style scoped>
 </style>
